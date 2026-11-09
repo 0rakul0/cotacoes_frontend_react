@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Cotações — frontend estático
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interface simplificada em **HTML, CSS e JavaScript puro**, sem React, npm ou etapa de compilação.
 
-## Available Scripts
+Este repositório substitui o protótipo Create React App original. O backend oficial é https://github.com/0rakul0/cotacoes_backEnd e contém a API FastAPI.
 
-In the project directory, you can run:
+## Como usar
 
-### `npm start`
+1. Clone o backend e instale suas dependências conforme o README dele.
+2. Clone este repositório dentro do backend, com o nome frontend:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    git clone https://github.com/0rakul0/cotacoes_frontend_react.git frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Execute o backend: python -m uvicorn main:app --host 127.0.0.1 --port 7777
+4. Abra http://127.0.0.1:7777
 
-### `npm test`
+Se o frontend estiver em outra pasta, configure COTACOES_FRONTEND_DIR apontando para ela. O FastAPI serve index.html na rota / e style.css e app.js em /static/.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Funcionalidades
 
-### `npm run build`
+- Lista de ativos acompanhados e última cotação armazenada.
+- Adição e retirada de tickers.
+- Histórico interativo em SVG com intervalos 1 mês, 3 meses, 6 meses, 1 ano, 5 anos e total.
+- Atualização sob demanda via provedor externo.
+- Cadastro de quantidade, custo médio e moeda por ativo.
+- Valor estimado e resultado não realizado; resumos separados por moeda.
+- Layout responsivo e sem dependências de JavaScript externas.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Limitações
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A API não fornece cotações em tempo real e não executa atualizações automaticamente. Posições são valores informados manualmente e não representam extrato de corretora. Não há autenticação; não exponha publicamente sem configurar controle de acesso.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Desenvolvimento
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Edite diretamente index.html, style.css e app.js. As chamadas usam rotas relativas da API para evitar configurações de CORS.
